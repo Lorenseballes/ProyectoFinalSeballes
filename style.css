@@ -1,0 +1,120 @@
+
+/*Pagina principal*/
+body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    background-image: url(/imagenes/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .navbar {
+    padding: 1rem;
+    padding-bottom: 8px;
+    background-color: #146b41a1;
+    
+  }
+  .navbar .collapse {
+    align-items: center;
+    justify-content: space-between;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
+    
+  }
+  section {
+    height: 500px;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(/imagenes/fondo1.jpg);
+    background-size: cover;
+    }
+    section h1 {
+        color: #0E5432;
+        font-size: 50px;
+    }
+    section .btn-outline-secondary{
+        color: #0E5432
+    }
+    .row h2 {
+      font-size: 70px;
+    }
+  
+  .card {
+    background-color: #146b41a1;
+    padding: 20px 20px 20px 20px;
+    margin: 10px;
+    
+  }
+  .card h5{
+    color: #AB8A51;
+    font-weight: bold;
+  }
+  .card h3 {
+    color: #AB8A51
+
+  }
+  .caed img{
+    width: 100px;
+    height: 100px;
+  }
+  footer {
+   
+    margin: 0px;   
+  }
+  footer span {
+    padding: 10px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .navbar-brand {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 807px) {
+    .d-block {
+      padding: 0px;
+    }
+    section {
+      background-image: url(/imagenes/fondouno.jpg);
+      height: 300px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    section .fw-light {
+      color: #146b41a1;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .dropdown {
+      display: none;
+    }
+  }
+  .secmail {
+    padding-top: 20px;
+
+  }
+  .secmail h2 {
+    color: #AB8A51;
+    font-weight: bold;
+  
+  }
+  .secmail .btn-sus {
+    border-bottom: transparent;
+    border: 1px;
+    font-family: "Montserrat", sans-serif;
+  }
+.-secmail .input-group{
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+  .container-fluid {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  
+  /*Formulario*/
+
+  #formulario p {
+
+    color:#AB8A51
+  }

@@ -1,102 +1,168 @@
 
-let nombre = prompt(`Ingrese su nombre`)
+     //productos
 
-let saludo = "Bienvenida/o ";
-alert(saludo + nombre);
+ const productos = [
+  {
+      id: 1,
+      nombre: "PULSERA CON DIAMANTES",
+      precio: 200,
+      imagen: "./imagenes/04",
+      cantidad: 1
+  },
+  {
+      id: 2,
+      nombre: "SET COLLAR Y PULSERA",
+      precio: 500,
+      imagen: "./imagenes/tres",
+      cantidad: 1
+  },
+  {
+      id: 3,
+      nombre: "AROS",
+      precio: 300,
+      imagen: "./imagenes/03",
+      cantidad: 1
+  },
+  {
+    id: 4,
+    nombre: "CADENA DOBLE",
+    precio: 400,
+    imagen: "./imagenes/01",
+    cantidad: 1
+},
+{
+    id: 5,
+    nombre: "ANILLOS DISEÑO 1",
+    precio: 300,
+    imagen: "./imagenes/uno",
+    cantidad: 1
+},
+{
+    id: 6,
+    nombre: "ANILLOS DISEÑO 2",
+    precio: 300,
+    imagen: "./imagenes/dos",
+    cantidad: 1
+}
+]; 
 
 
-// Función para crear un objeto de producto
-function crearProducto(nombre, precio) {
-    return {
-      nombre: nombre,
-      precio: precio,
-    };
-  }
-  
-  // Array de productos disponibles 
-  let productosDisponibles = [
-    crearProducto("Anillo de plata", 4000),
-    crearProducto("Collar de oro", 8000),
-    crearProducto("Pulsera de plata", 7000),
-    crearProducto("Aros de oro", 4500),
-  ];
-  
-  // Array para almacenar los productos seleccionados por el usuario
-  let carrito = [];
-  
-  // Variable para almacenar el total a pagar
-  let totalAPagar = 0;
-  
-  // Función para agregar un producto al carrito
-  function agregarAlCarrito(producto) {
-    carrito.push(producto);
-    totalAPagar += producto.precio;
-    alert(`El producto "${producto.nombre}" ha sido agregado al carrito.`);
-  }
-  
-  // Función para mostrar el contenido del carrito y el total a pagar
-  function mostrarCarrito() {
-    console.log("Productos en el carrito:");
-    for (let i = 0; i < carrito.length; i++) {
-      console.log(`${i + 1}. ${carrito[i].nombre} - $${carrito[i].precio}`);
-    }
-    alert(`Total a pagar: $${totalAPagar}`);
-  }
+let carrito = []
 
-  //Función para mostrar los productos en descuento
-function mostrarProductosDescuento() {
-    let productosConDescuento = productosDisponibles.filter(
-      (producto) => producto.precio < 5000
-    );
-  
-    let mensaje = "Productos en descuento:\n";
-    for (let i = 0; i < productosConDescuento.length; i++) {
-      mensaje += `${i + 1}. ${productosConDescuento[i].nombre} - $${productosConDescuento[i].precio}\n`;
-    }
-  
-    alert(mensaje);
-  }
-  
-  // Prompt para mostrar los productos disponibles y agregar al carrito
-  while (true) {
-    let opcion = parseInt(prompt(`Seleccione una opción:
-      1. Productos disponibles
-      2. Agregar producto al carrito
-      3. Mostrar carrito
-      4. Productos en descuento
-      5. Salir`)
-    );
-  
-    if (opcion === 1) {
-      console.log("Productos disponibles:");
-      for (let i = 0; i < productosDisponibles.length; i++) {
-        console.log(
-          `${i + 1}. ${productosDisponibles[i].nombre} - $${productosDisponibles[i].precio}`
-        );
-      }
-    } else if (opcion === 2) {
-      let productoIndex = parseInt(
-        prompt("Ingrese el número del producto que desea agregar al carrito:")
-      );
-      if (
-        productoIndex >= 1 &&
-        productoIndex <= productosDisponibles.length
-      ) {
-        let productoSeleccionado =
-          productosDisponibles[productoIndex - 1];
-        agregarAlCarrito(productoSeleccionado);
-      } else {
-        alert("Opción inválida. Intente nuevamente.");
-      }
-    } else if (opcion === 3) {
-      mostrarCarrito();
-    } else if (opcion === 4) {
-        mostrarProductosDescuento();
-    } else if (opcion === 5) {
-      break;
-    } else {
-      alert("Opción inválida. Intente nuevamente.");
-    }
-  }
-  
-  alert("Gracias por confiar en nosotros");
+const botonesAgregar = document.querySelectorAll(".agregar-carrito");
+
+botonesAgregar.forEach((boton) => {
+  boton.addEventListener("click", agregarAlCarrito);
+
+
+});
+
+function agregarAlCarrito(event) {
+  const boton = event.target;
+  const producto = obtenerProductoDesdeBoton(boton);
+  carrito.push(producto);
+  mostrarCarrito();
+}
+function obtenerProductoDesdeBoton(boton) {
+  const productoId = boton.dataset.productId;
+  const producto = productos.find((prod) => prod.id === parseInt(productoId));
+  return producto;
+}
+function mostrarCarrito() {
+ console.log("Productos en el carrito:");
+  console.log(carrito);
+}
+
+
+
+
+
+const verCarrito = document.querySelector("#verCarrito");
+const modalCarrito = document.querySelector("#modalCarrito");
+const contenido = document.querySelector("#contenido");
+
+verCarrito.addEventListener("click", mostrarCarritoModal);
+
+function mostrarCarritoModal () {
+    contenido.innerHTML = " ";
+
+if (carrito.length === 0) {
+    contenido.innerHTML = "<p>El carrito está vacío.</p>";
+  } else {
+
+    const productosHTML = carrito.map((producto) => {
+      return `
+        <div>
+          <h3>${producto.nombre}</h3>
+          <p>Precio: U$S${producto.precio}</p>
+          <p>Cantidad: ${producto.cantidad}</p>
+        </div>
+      `;
+    });
+
+    // Agregar los productos al contenedor del carrito
+    contenido.innerHTML = productosHTML.join("");
+
+    const total = carrito.reduce((accumulator, producto) => {
+        return accumulator + producto.precio * producto.cantidad;
+    }, 0);
+
+    const totalComp = document.querySelector("#totalComp");
+    totalComp.textContent = total;
+}
+
+  // Mostrar el modal del carrito
+  modalCarrito.style.display = "block";
+ }
+
+ //vaciar carrito 
+
+ const botonVaciarCarrito = document.querySelector("#eliminar");
+ const totalCompElemento = document.querySelector("#totalComp");
+
+botonVaciarCarrito.addEventListener("click", vaciarCarrito);
+
+function vaciarCarrito() {
+  carrito = []; 
+  mostrarCarrito(); 
+  totalCompElemento.textContent = "0";
+}
+
+   //Saludo
+
+   const Saludo = document.querySelector("#eliminar")
+
+  Saludo.addEventListener("click", ()=> {
+    Swal.fire('Regresa cuando quieras, aquí te esperamos')
+
+    }) 
+
+  //finalizar
+
+  const fin = document.querySelector("#finalizar")
+
+  fin.addEventListener("click", ()=> {
+    Swal.fire(
+        ' ',
+        'Tu compra se ha realizado con éxito :)',
+        'success'
+      )
+
+    }) 
+
+
+
+// Ingresar mail
+
+const btn = document.querySelector("#button-addon2")
+
+btn.addEventListener("click", ()=> {
+    Swal.fire(
+        'Gracias por dejarnos tu mail',
+        'Nos pondremos en contacto contigo :)',
+        'success'
+      )
+
+    }) 
+
+
