@@ -79,13 +79,21 @@
               <a class="nav-link" href="#contProductos">PRODUCTOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#verCarrito">CARRITO</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="iniciarsesion.html">INICIAR SESIÓN</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#verCarrito"> 
+                <!-- Button trigger modal -->
+                <div class="d-flex align-items-center justify-content-center">
+                <button id="verCarrito" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+                    </svg>
+              </button>
+            </div></a>
             </li>
           </ul>
         </div>
@@ -117,68 +125,8 @@
         </h2>
       </div>
     </div>
-      <div id="contProductos" class="card-group">
-        <div class="card">
-          <img src="imagenes/04.jpg" class="card-img-top" alt="CasaPuntadelEste" />
-          <div class="card-body">
-            <h5 class="card-title">PULSERA CON DIAMANTES</h5>
-            <h3 class="precio"> U$S200</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="1">Agregar al carrito</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="imagenes/tres.jpg" class="card-img-top" alt="CasaMontevideo" />
-          <div class="card-body">
-            <h5 class="card-title">SET COLLAR Y PULSERA</h5>
-            <h3 class="precio"> U$S500</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="2">Agregar al carrito</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="imagenes/03.jpg" class="card-img-top" alt="CasaColonia" />
-          <div class="card-body">
-            <h5 class="card-title">AROS</h5>
-            <h3 class="precio"> U$S300</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="3">Agregar al carrito</button>
-          </div>
-        </div>
-      </div>
-      <div class="card-group">
-        <div class="card">
-          <img src="imagenes/01.jpg" class="card-img-top" alt="AptoPiria" />
-          <div class="card-body">
-            <h5 class="card-title">CADENA DOBLE</h5>
-            <h3 class="precio"> U$S400</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="4">Agregar al carrito</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="imagenes/uno.jpg" class="card-img-top" alt="CasaFlorida" />
-          <div class="card-body">
-            <h5 class="card-title">ANILLOS DISEÑO 1</h5>
-            <h3 class="precio"> U$S300</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="5">Agregar al carrito</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="/imagenes/dos.jpg" class="card-img-top" alt="Puntaballena" />
-          <div class="card-body">
-            <h5 class="card-title">ANILLOS DISEÑO 2</h5>
-            <h3 class="precio"> U$S300</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" type="button" data-product-id="6">Agregar al carrito</button>
-          </div>
-        </div>
-      </div>
-    
-      
-    <!-- Button trigger modal -->
-    <div class="d-flex align-items-center justify-content-center">
-    <button id="verCarrito" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-      VER CARRITO
-  </button>
-</div>
-    
-
+    <div class="listProductos"></div>
+  
 <!-- Modal -->
 <div id="modalCarrito" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">

@@ -1,7 +1,7 @@
 
      //productos
 
- const productos = [
+ /*const productos = [
   {
       id: 1,
       nombre: "PULSERA CON DIAMANTES",
@@ -44,7 +44,32 @@
     imagen: "./imagenes/dos",
     cantidad: 1
 }
-]; 
+]; */
+
+const list = document.querySelector(".listProductos")
+
+fetch("../data.json")
+.then((res)=>res.json())
+.then((data)=>{
+  data.forEach((prod)=>{
+const li = document.createElement('li');
+li.innerHTML=
+      ` <div id="contProductos" class="card-group">
+        <div class="card">
+        <img src="${prod.imagen}" class="card-img-top" alt="producto" />
+          <div class="card-body">
+            <h5 class="card-title">${prod.nombre}</h5>
+            <h3 class="precio">U$S ${prod.precio}</h3>
+            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="1">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+      `;
+
+          list.append(li)
+  })
+})
+
 
 
 let carrito = []

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "nombre": "PULSERA CON DIAMANTES",
+        "precio":  200,
+        "imagen": "./imagenes/pulseraDiamante.jpg",
+        "cantidad": 1
+    },
+    {
+        "id": 2,
+        "nombre": "SET COLLAR Y PULSERA",
+        "precio": 500,
+        "imagen": "./imagenes/setCollarPulsera.jpg",
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "AROS",
+        "precio": 300,
+        "imagen": "./imagenes/aros.jpg",
+        "cantidad": 1
+    },
+    {
+        "id": 4,
+        "nombre": "CADENA DOBLE",
+        "precio": 400,
+        "imagen": "./imagenes/cadenaDoble.jpg",
+        "cantidad": 1
+  },
+  {
+    "id": 5,
+    "nombre": "ANILLOS DISEÑO 1",
+    "precio": 300,
+    "imagen": "./imagenes/anilloUno.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 6,
+    "nombre": "ANILLOS DISEÑO 2",
+    "precio": 300,
+    "imagen": "./imagenes/anilloDos.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 7,
+    "nombre": "COLLAR ",
+    "precio":  200,
+    "imagen": "./imagenes/collarDos.jpg",
+    "cantidad": 1
+},
+{
+  "id": 8,
+  "nombre": "PULSERAANILLOS X 3 ",
+  "precio":  200,
+  "imagen": "./imagenes/anillosX3.jpg",
+  "cantidad": 1
+}
+]
