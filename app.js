@@ -1,66 +1,20 @@
+  const list = document.querySelector(".listProductos");
 
-     //productos
 
- /*const productos = [
-  {
-      id: 1,
-      nombre: "PULSERA CON DIAMANTES",
-      precio: 200,
-      imagen: "./imagenes/04",
-      cantidad: 1
-  },
-  {
-      id: 2,
-      nombre: "SET COLLAR Y PULSERA",
-      precio: 500,
-      imagen: "./imagenes/tres",
-      cantidad: 1
-  },
-  {
-      id: 3,
-      nombre: "AROS",
-      precio: 300,
-      imagen: "./imagenes/03",
-      cantidad: 1
-  },
-  {
-    id: 4,
-    nombre: "CADENA DOBLE",
-    precio: 400,
-    imagen: "./imagenes/01",
-    cantidad: 1
-},
-{
-    id: 5,
-    nombre: "ANILLOS DISEÑO 1",
-    precio: 300,
-    imagen: "./imagenes/uno",
-    cantidad: 1
-},
-{
-    id: 6,
-    nombre: "ANILLOS DISEÑO 2",
-    precio: 300,
-    imagen: "./imagenes/dos",
-    cantidad: 1
-}
-]; */
-
-const list = document.querySelector(".listProductos")
-
-fetch("../data.json")
-.then((res)=>res.json())
-.then((data)=>{
+  const llamarProd= async()=>{
+  const resp = await fetch("./data.json");
+  const data = await resp.json();
+  
   data.forEach((prod)=>{
-const li = document.createElement('li');
-li.innerHTML=
+  const li = document.createElement('li');
+    li.innerHTML=
       ` <div id="contProductos" class="card-group">
         <div class="card">
         <img src="${prod.imagen}" class="card-img-top" alt="producto" />
           <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
             <h3 class="precio">U$S ${prod.precio}</h3>
-            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="1">Agregar al carrito</button>
+            <button id="agregar" class="agregar-carrito btn btn-dark" data-product-id="${prod.id}">Agregar al carrito</button>
           </div>
         </div>
       </div>
@@ -68,65 +22,62 @@ li.innerHTML=
 
           list.append(li)
   })
-})
 
+  let carrito = []
 
+  const botonesAgregar = document.querySelectorAll(".agregar-carrito");
 
-let carrito = []
-
-const botonesAgregar = document.querySelectorAll(".agregar-carrito");
-
-botonesAgregar.forEach((boton) => {
+  botonesAgregar.forEach((boton) => {
   boton.addEventListener("click", agregarAlCarrito);
 
 
 });
 
-function agregarAlCarrito(event) {
+  function agregarAlCarrito(event) {
   const boton = event.target;
   const producto = obtenerProductoDesdeBoton(boton);
   carrito.push(producto);
   mostrarCarrito();
 }
-function obtenerProductoDesdeBoton(boton) {
+  function obtenerProductoDesdeBoton(boton) {
   const productoId = boton.dataset.productId;
-  const producto = productos.find((prod) => prod.id === parseInt(productoId));
+  const producto = data.find((prod) => prod.id === parseInt(productoId));
   return producto;
 }
-function mostrarCarrito() {
- console.log("Productos en el carrito:");
+  function mostrarCarrito() {
+  console.log("Productos en el carrito:");
   console.log(carrito);
-}
+ }
 
+  const verCarrito = document.querySelector("#verCarrito");
+  const modalCarrito = document.querySelector("#modalCarrito");
+  const contenido = document.querySelector("#contenido");
 
+  verCarrito.addEventListener("click", mostrarCarritoModal);
 
-
-
-const verCarrito = document.querySelector("#verCarrito");
-const modalCarrito = document.querySelector("#modalCarrito");
-const contenido = document.querySelector("#contenido");
-
-verCarrito.addEventListener("click", mostrarCarritoModal);
-
-function mostrarCarritoModal () {
+  function mostrarCarritoModal () {
     contenido.innerHTML = " ";
 
-if (carrito.length === 0) {
+  if (carrito.length === 0) {
     contenido.innerHTML = "<p>El carrito está vacío.</p>";
   } else {
 
-    const productosHTML = carrito.map((producto) => {
+    const productosHTML = carrito.map((producto, index) => {
       return `
         <div>
           <h3>${producto.nombre}</h3>
           <p>Precio: U$S${producto.precio}</p>
           <p>Cantidad: ${producto.cantidad}</p>
+          <button class="eliminar-producto" data-product-index="${index}">
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
         </div>
       `;
-    });
+    })
+    .join("");
 
     // Agregar los productos al contenedor del carrito
-    contenido.innerHTML = productosHTML.join("");
+    contenido.innerHTML = productosHTML;
 
     const total = carrito.reduce((accumulator, producto) => {
         return accumulator + producto.precio * producto.cantidad;
@@ -134,26 +85,51 @@ if (carrito.length === 0) {
 
     const totalComp = document.querySelector("#totalComp");
     totalComp.textContent = total;
-}
+    // Agregar eventos de clic a los botones de eliminar
+    const botonesEliminar = document.querySelectorAll(".eliminar-producto");
+    botonesEliminar.forEach((boton) => {
+      boton.addEventListener("click", eliminarProducto);
+    });
+  }
+
+  //Se pasa el array a JSON
+  const carro = JSON.stringify(carrito)
+  localStorage.setItem("prod", carro)
+
+  //Se obtiene información del storage
+
+  const carritoGuardado = localStorage.getItem('carro');
+     if (carritoGuardado) {
+   carro = JSON.parse(carritoGuardado);
+} 
 
   // Mostrar el modal del carrito
-  modalCarrito.style.display = "block";
+    modalCarrito.style.display = "block";
  }
-
+ function eliminarProducto(event) {
+  const boton = event.target;
+  const productoIndex = boton.dataset.productIndex;
+  carrito.splice(productoIndex, 1);
+  mostrarCarritoModal();
+}
  //vaciar carrito 
 
- const botonVaciarCarrito = document.querySelector("#eliminar");
- const totalCompElemento = document.querySelector("#totalComp");
+  const botonVaciarCarrito = document.querySelector("#eliminar");
+  const totalCompElemento = document.querySelector("#totalComp");
 
-botonVaciarCarrito.addEventListener("click", vaciarCarrito);
+  botonVaciarCarrito.addEventListener("click", vaciarCarrito);
 
-function vaciarCarrito() {
+  function vaciarCarrito() {
   carrito = []; 
   mostrarCarrito(); 
   totalCompElemento.textContent = "0";
 }
 
-   //Saludo
+}
+ llamarProd()
+
+
+        //Saludo
 
    const Saludo = document.querySelector("#eliminar")
 
@@ -176,12 +152,11 @@ function vaciarCarrito() {
     }) 
 
 
-
 // Ingresar mail
 
-const btn = document.querySelector("#button-addon2")
+  const btn = document.querySelector("#button-addon2")
 
-btn.addEventListener("click", ()=> {
+  btn.addEventListener("click", ()=> {
     Swal.fire(
         'Gracias por dejarnos tu mail',
         'Nos pondremos en contacto contigo :)',
@@ -190,4 +165,42 @@ btn.addEventListener("click", ()=> {
 
     }) 
 
+    //Inicio de sesión
 
+    var modal = document.querySelector("#modal");
+    var openModalBtn = document.querySelector("#open-modal");
+
+    openModalBtn.addEventListener("click", function() {
+    modal.style.display = "block"; // Mostrar el modal al hacer clic en el botón
+  });
+
+    document.addEventListener("click", function(event) {
+    if (event.target === modal) {
+    modal.style.display = "none"; // Ocultar el modal al hacer clic fuera de él
+  }
+  });
+
+
+    document.querySelector("#login-form").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+  
+    // Obtener los valores de los campos de entrada
+    var username = document.querySelector("#username").value;
+    var password = document.querySelector("#password").value;
+  
+    // Verificar las credenciales 
+    if (username === "Omar" && password === "1234") {
+      // Inicio de sesión exitoso
+      mostrarNombreUsuario(username);
+      modal.style.display = "none"; 
+    } else {
+      // Usuario/contraseña incorrectas
+      alert("Nombre de usuario o contraseña incorrectos");
+    }
+  });
+  
+  function mostrarNombreUsuario(username) {
+    var mensaje = "Bienvenido, " + username + "!";
+    document.querySelector("#nombre-usuario").textContent = mensaje;
+  }
+  

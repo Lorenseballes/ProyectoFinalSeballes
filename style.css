@@ -8,6 +8,15 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+ 
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    margin: 100px auto;
+    width: 300px;
+  }
   
   .navbar {
     padding: 1rem;

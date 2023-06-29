@@ -65,6 +65,7 @@
       </symbol>
     </svg>
     <!-- navbar -->
+    <div id="nombre-usuario"></div>
     <nav class="navbar navbar-expand-md navbar-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,10 +77,11 @@
           </a>
           <ul class="navbar-nav d-flex justify-content-center align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="#contProductos">PRODUCTOS</a>
+              <a class="nav-link" href="#open-modal"><button id="open-modal">INICIAR SESIÓN</button>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="iniciarsesion.html">INICIAR SESIÓN</a>
+              <a class="nav-link" href="#contProductos">PRODUCTOS</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="nosotros.html">NOSOTROS</a>
@@ -146,6 +148,19 @@
         <button id="finalizar" type="button" class="btn btn-dark" data-bs-dismiss="modal" >FINALIZA COMPRA</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!--Modal formulario-->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <form id="login-form">
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" required>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" required>
+      <button type="submit">Iniciar</button>
+    </form>
   </div>
 </div>
 
