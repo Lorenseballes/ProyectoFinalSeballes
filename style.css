@@ -1,147 +1,217 @@
 
 /*Pagina principal*/
 body {
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    /*background-image: url(/imagenes/fondo2.jpg);*/
-    background-color: #146b41a1 ;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
- 
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    margin: 100px auto;
-    width: 300px;
-  }
-  
-  .navbar {
-    padding: 1rem;
-    padding-bottom: 8px;
-   
-    
-  }
-  .navbar .collapse {
-    align-items: center;
-    justify-content: space-between;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
-    
-  }
-  section {
-    height: 500px;
-    margin: 0px;
-    padding: 0px;
-    background-image: url(/imagenes/fondo1.jpg);
-    background-size: cover;
-    }
-    section h1 {
-        color: #0E5432;
-        font-size: 50px;
-    }
-    section .btn-outline-secondary{
-        color: #0E5432
-    }
-    .row h2 {
-      font-size: 70px;
-    }
-  
-    .card {
-      background-color: #146b41a1;
-      display: inline-block;
-      width: calc(33.33% - 20px); /* Ancho del 33.33% con un espacio de 10px entre las tarjetas */
-      margin-left: 30px;
-      margin-top: 20px; /* Espacio de 5px entre las tarjetas */
-      vertical-align:auto; 
-      box-sizing: border-box; /* Incluir los bordes y el padding en el ancho total */
-    }
-    
-
-  .card h5{
-    color: #AB8A51;
-    font-weight: bold;
-  }
-  .card h3 {
-    color: #AB8A51
-
-  }
-  .card img{
-    width: 300px;
-    height: 300px;
-  
-  }
-  .listProductos {
-    width: 100%; /* Ajusta el ancho según el contenedor padre */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    list-style-type: none;
-  
-  }
-
-
-  footer {
-   
-    margin: 0px;   
-  }
-  footer span {
-    padding: 10px;
-  }
-  
-  @media screen and (max-width: 767px) {
-    .navbar-brand {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 807px) {
-    .d-block {
-      padding: 0px;
-    }
-    section {
-      background-image: url(/imagenes/fondouno.jpg);
-      height: 300px;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
-    section .fw-light {
-      color: #146b41a1;
-    }
-  }
-  @media screen and (max-width: 576px) {
-    .dropdown {
-      display: none;
-    }
-  }
-  .secmail {
-    padding-top: 40px;
-
-  }
-  .secmail h2 {
-    color: #AB8A51;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
-  
-  }
-  .secmail .btn-sus {
-    border-bottom: transparent;
-    border: 1px;
-    font-family: "Montserrat", sans-serif;
-  }
-.-secmail .input-group{
-  padding-right: 20px;
-  padding-left: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  background-color: #146b41a1 ;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-  .container-fluid {
-    padding-left: 0%;
-    padding-right: 0%;
+
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  margin: 100px auto;
+  width: 300px;
+}
+
+.navbar {
+  padding: 1rem;
+  padding-bottom: 8px;
+ 
+  
+}
+.navbar .collapse {
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
+  
+}
+section {
+  height: 500px;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(/imagenes/fondo1.jpg);
+  background-size: cover;
+  }
+  section h1 {
+      color: #0E5432;
+      font-size: 50px;
+  }
+  section .btn-outline-secondary{
+      color: #0E5432
+  }
+  .row h2 {
+    font-size: 70px;
+  }
+
+  .card {
+    background-color: #146b41a1;
+    display: inline-block;
+    width: calc(33.33% - 20px); 
+    margin-left: 30px;
+    margin-top: 20px; 
+    vertical-align:auto; 
+    box-sizing: border-box; 
   }
   
-  /*Formulario*/
 
-  #formulario p {
+.card h5{
+  color: #AB8A51;
+  font-weight: bold;
+}
+.card h3 {
+  color: #AB8A51
 
-    color:#AB8A51
+}
+.card img{
+  width: 300px;
+  height: 300px;
+
+}
+.listProductos {
+  width: 100%; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style-type: none;
+
+}
+
+
+footer {
+ 
+  margin: 0px;   
+}
+footer span {
+  padding: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-brand {
+    display: none;
   }
+}
+@media screen and (max-width: 807px) {
+  .d-block {
+    padding: 0px;
+  }
+  section {
+    background-image: url(/imagenes/fondouno.jpg);
+    height: 300px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  section .fw-light {
+    color: #146b41a1;
+  }
+}
+@media screen and (max-width: 576px) {
+  .dropdown {
+    display: none;
+  }
+}
+.secmail {
+  padding-top: 40px;
+
+}
+.secmail h2 {
+  color: #AB8A51;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
+
+}
+.secmail .btn-sus {
+  border-bottom: transparent;
+  border: 1px;
+  font-family: "Montserrat", sans-serif;
+}
+.secmail .input-group{
+padding-right: 20px;
+padding-left: 20px;
+}
+
+.container-fluid {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+/*Formulario*/
+
+#formulario p {
+
+  color:#AB8A51
+}
+
+
+/* Estilos generales para el modal */
+#modalCarrito {
+  font-family: "Montserrat", sans-serif;
+}
+
+.modal-title {
+  color: #333;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 20px;
+  justify-content: space-between;
+}
+
+/* Estilos para el botón "Vaciar Carrito" */
+#eliminar {
+  background-color: #333;
+  color: #fff;
+}
+
+#eliminar:hover {
+  background-color: #222;
+}
+
+/* Estilos para el botón "Finalizar Compra" */
+#finalizar {
+  background-color: #146b41a1;
+  color: #fff;
+}
+
+#finalizar:hover {
+  background-color: #146b41a1;
+}
+
+/* Estilos para los productos en el carrito */
+.modal-body div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.producto-imagen {
+  width: 100px;
+  height: 100px;
+}
+
+.eliminar-producto {
+  background-color: #ac313d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.eliminar-producto:hover {
+  background-color: #ac313d;
+}
+
+/* Estilos para el total del carrito */
+#total-Comp {
+  font-weight: bold;
+}
+
+#totalComp {
+  color: #146b41a1;
+}
